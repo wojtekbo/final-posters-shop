@@ -1,8 +1,14 @@
 @import './settings.scss';
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;500;600&display=swap');
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0.5rem;
+  font-family: $font-header;
 }
 
 h1 {
@@ -16,5 +22,22 @@ h2 {
   margin: 2rem 0;
   font-size: 3rem;
 }
+ul {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
 
+li {
+  list-style: none;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
 
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  li {
+    font-size: 2rem;
+  }
+}
