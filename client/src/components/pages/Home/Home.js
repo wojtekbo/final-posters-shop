@@ -1,9 +1,13 @@
 import React from 'react';
+import MainCarousel from '../../layout/MainCarousel/MainCarousel';
+import Container from 'react-bootstrap/Container';
 
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
+      <MainCarousel />
+
+      <Container></Container>
     </div>
   );
 };

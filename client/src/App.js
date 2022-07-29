@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {fetchGetAllProducts, getAllProducts} from './redux/productsRedux';
 import {useDispatch, useSelector} from 'react-redux';
 import {Routes, Route} from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
+
 import Home from './components/pages/Home/Home';
 import NoMatch from './components/pages/NoMatch/NoMatch';
 import Header from './components/layout/Header/Header';
@@ -23,14 +23,13 @@ function App() {
 
   return (
     <div className="App">
-
       <Header />
-      <Container>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </Container>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+
       <Footer />
     </div>
   );
