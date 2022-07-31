@@ -27,10 +27,8 @@ a:visited {
 
 .container {
   margin: 1rem auto;
-  min-height: calc(100vh - 14rem);
+  padding: 1rem;
 }
-
-
 
 @import './typography.scss';
 @import './vendor/swiper.scss';

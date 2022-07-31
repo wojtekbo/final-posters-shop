@@ -1,18 +1,18 @@
 import axios from 'axios';
 
 //selectors
-export const getAllProducts = ({products}) => {
-  return products;
+export const getSelectedProduct = ({selectedProduct}) => {
+  return selectedProduct;
 };
 
 /* thunk creators */
-export const fetchGetAllProducts = () => {
+export const fetchProductById = id => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
     axios
-      .get('http://localhost:8000/api/products')
+      .get(`http://localhost:8000/api/products/${id}`)
       .then(res => {
-        dispatch(fetchProductsSuccess(res.data));
+        dispatch(fetchProductByIdSuccess(res.data));
       })
       .catch(err => {
         dispatch(fetchError(err.message || true));
@@ -21,22 +21,22 @@ export const fetchGetAllProducts = () => {
 };
 
 // actions
-const createActionName = actionName => `app/produscts/${actionName}`;
+const createActionName = actionName => `app/selectedProduct/${actionName}`;
 const FETCH_START = createActionName('FETCH_START');
-const FETCH_PRODUCTS_SUCCESS = createActionName('FETCH_PRODUCTS_SUCCESS');
+const FETCH_PRODUCT_BY_ID_SUCCESS = createActionName('FETCH_PRODUCT_BY_ID_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 
 // action creators
 export const fetchStarted = payload => ({payload, type: FETCH_START});
-export const fetchProductsSuccess = payload => ({payload, type: FETCH_PRODUCTS_SUCCESS});
+export const fetchProductByIdSuccess = payload => ({payload, type: FETCH_PRODUCT_BY_ID_SUCCESS});
 export const fetchError = payload => ({payload, type: FETCH_ERROR});
 
-const productsReducer = (statePart = [], action) => {
+const productReducer = (statePart = [], action) => {
   switch (action.type) {
     case FETCH_START: {
       return {...statePart, loading: {active: true, error: false}};
     }
-    case FETCH_PRODUCTS_SUCCESS: {
+    case FETCH_PRODUCT_BY_ID_SUCCESS: {
       return {...statePart, loading: {active: false, error: false, loadingDate: new Date().toUTCString()}, data: action.payload};
     }
     case FETCH_ERROR: {
@@ -47,4 +47,4 @@ const productsReducer = (statePart = [], action) => {
   }
 };
 
-export default productsReducer;
+export default productReducer;

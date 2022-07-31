@@ -1,18 +1,18 @@
 import axios from 'axios';
 
 //selectors
-export const getAllProducts = ({products}) => {
-  return products;
+export const getAllMainCarouselImgs = ({mainCarouselImgs}) => {
+  return mainCarouselImgs.data;
 };
 
 /* thunk creators */
-export const fetchGetAllProducts = () => {
+export const fetchGetAllMainCarouselImgs = () => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
     axios
-      .get('http://localhost:8000/api/products')
+      .get('http://localhost:8000/api/mainCarousel')
       .then(res => {
-        dispatch(fetchProductsSuccess(res.data));
+        dispatch(fetchImagesSuccess(res.data));
       })
       .catch(err => {
         dispatch(fetchError(err.message || true));
@@ -21,22 +21,22 @@ export const fetchGetAllProducts = () => {
 };
 
 // actions
-const createActionName = actionName => `app/produscts/${actionName}`;
+const createActionName = actionName => `app/mainCarousel/${actionName}`;
 const FETCH_START = createActionName('FETCH_START');
-const FETCH_PRODUCTS_SUCCESS = createActionName('FETCH_PRODUCTS_SUCCESS');
+const FETCH_IMAGES_SUCCESS = createActionName('FETCH_IMAGES_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 
 // action creators
 export const fetchStarted = payload => ({payload, type: FETCH_START});
-export const fetchProductsSuccess = payload => ({payload, type: FETCH_PRODUCTS_SUCCESS});
+export const fetchImagesSuccess = payload => ({payload, type: FETCH_IMAGES_SUCCESS});
 export const fetchError = payload => ({payload, type: FETCH_ERROR});
 
-const productsReducer = (statePart = [], action) => {
+const mainCarouselImgsReducer = (statePart = [], action) => {
   switch (action.type) {
     case FETCH_START: {
       return {...statePart, loading: {active: true, error: false}};
     }
-    case FETCH_PRODUCTS_SUCCESS: {
+    case FETCH_IMAGES_SUCCESS: {
       return {...statePart, loading: {active: false, error: false, loadingDate: new Date().toUTCString()}, data: action.payload};
     }
     case FETCH_ERROR: {
@@ -47,4 +47,4 @@ const productsReducer = (statePart = [], action) => {
   }
 };
 
-export default productsReducer;
+export default mainCarouselImgsReducer;

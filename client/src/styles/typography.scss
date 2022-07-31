@@ -21,6 +21,11 @@ h2 {
   font-weight: bold;
   margin: 2rem 0;
   font-size: 3rem;
+  text-transform: uppercase;
+}
+p {
+  font-family: $font-text;
+  font-size: 1rem;
 }
 ul {
   font-size: 1rem;
