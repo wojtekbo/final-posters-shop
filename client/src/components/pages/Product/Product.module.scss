@@ -1,7 +1,8 @@
 @import '../../../styles/global.scss';
 
-// .Product {
-// }
+.Product {
+}
+
 .product_wrapper {
   display: flex;
   flex-direction: column;
@@ -51,6 +52,19 @@
       flex-basis: 350px;
       min-width: 350px;
       flex-grow: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product_wrapper {
+    .product_data {
+      .product_buy {
+        padding: 0px;
+        margin-left: 0px;
+        margin-top: 20px;
+        justify-content: start;
+      }
     }
   }
 }

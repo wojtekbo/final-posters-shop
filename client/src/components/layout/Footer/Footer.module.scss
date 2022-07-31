@@ -1,0 +1,19 @@
+@import '../../../styles/global.scss';
+.Footer {
+  padding: 40px;
+  margin: 20px 0;
+  p {
+    color: $color-text;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Footer {
+    padding: 15px;
+    margin: 10px 0;
+    p {
+      font-size: 0.7rem;
+    }
+  }
+}

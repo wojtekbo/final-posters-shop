@@ -1,0 +1,72 @@
+@import '../../../styles/global.scss';
+
+.ProductsList {
+  background-color: $color-background-white;
+}
+.products_wrapper {
+  margin: 80px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 60px;
+}
+.product {
+  //   border: 1px solid rgb(255, 255, 255);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  flex-basis: 30%;
+  flex-grow: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease-in;
+  &:hover {
+    box-shadow: rgb(38, 57, 77) 0px 20px 18px -8px;
+  }
+  &:hover h3 {
+    opacity: 1;
+  }
+  &:hover .description {
+    opacity: 1;
+  }
+  &:hover .background {
+    opacity: 0.5;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .background {
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    inset: 0;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+  }
+
+  .description {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+    padding: 10%;
+
+    h3 {
+      text-align: center;
+      transition: all 0.3s ease-in;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product {
+    margin: 0 30px;
+  }
+}

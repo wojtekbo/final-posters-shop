@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link, NavLink} from 'react-router-dom';
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {
@@ -14,14 +15,15 @@ const Navigation = () => {
     <div className={styles.Navigation}>
       <header className={styles.header}>
         <nav className={styles.navbar}>
-          <a href="/" className={styles.nav_logo}>
+          <Link to="/" className={styles.nav_logo}>
             <img className={styles.logo} alt="logo" src="/img/logo/AoH-logo.png" />
-          </a>
+          </Link>
+
           <ul className={menuIsActive ? `${styles.nav_menu} ${styles.active}` : `${styles.nav_menu}`}>
             <li className={styles.nav_item}>
-              <a href="/#" className={styles.nav_link}>
+              <NavLink to="/" className={styles.nav_link}>
                 Produkty
-              </a>
+              </NavLink>
             </li>
             <li className={styles.nav_item}>
               <a href="/#" className={styles.nav_link}>
@@ -34,9 +36,9 @@ const Navigation = () => {
               </a>
             </li>
             <li className={styles.nav_item}>
-              <a href="/#" className={styles.nav_link}>
+              <NavLink to="/shopping-cart" className={styles.nav_link}>
                 Koszyk
-              </a>
+              </NavLink>
             </li>
           </ul>
           <div

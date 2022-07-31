@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import uniqid from 'uniqid';
+import {addProduct} from '../../../redux/shoppingCartRedux';
+import {useDispatch} from 'react-redux';
 
 const AddToBasket = ({product}) => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit: validate,
@@ -13,11 +15,12 @@ const AddToBasket = ({product}) => {
 
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState();
+  const [price, setPrice] = useState();
 
   const onSubmit = () => {
     console.log('WYSYLAM');
-    console.log('quantity', quantity);
-    console.log('size', size);
+    dispatch(addProduct({...product, quantity, size, price}));
+
     // setPublishedDateError(!publishedDate);
     //   action({title, content, publishedDate, price, localization, user, phone, status: 'published'});
   };
@@ -32,7 +35,15 @@ const AddToBasket = ({product}) => {
           <Form.Control {...register('quantity', {required: true})} value={quantity} onChange={e => setQuantity(e.target.value)} type="number" />
           {errors.quantity && <small className="d-block form-text text-danger mt-1">Pole wymagane</small>}
           <Form.Label className="mt-2">Rozmiar</Form.Label>
-          <Form.Select {...register('size', {required: true})} onChange={e => setSize(e.target.value)} aria-label="Wybierz rozmiar">
+          <Form.Select
+            {...register('size', {required: true})}
+            onChange={e => {
+              setSize(e.target.value);
+              console.log(e.target);
+              setPrice(e.target.getAttribute('data-price'));
+            }}
+            aria-label="Wybierz rozmiar"
+          >
             <option></option>
             {/* <option>Wybierz rozmiar</option> */}
             {product.size.map(el => (

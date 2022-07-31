@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {fetchGetAllProducts, getAllProducts} from './redux/productsRedux';
+import {fetchGetAllProducts} from './redux/productsRedux';
 import {fetchGetAllMainCarouselImgs} from './redux/mainCarouselRedux';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Routes, Route} from 'react-router-dom';
 
 import Home from './components/pages/Home/Home';
@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/normalize.scss';
 import './styles/global.scss';
 import Product from './components/pages/Product/Product';
+import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,14 +22,13 @@ function App() {
     dispatch(fetchGetAllMainCarouselImgs());
   }, [dispatch]);
 
-  const products = useSelector(state => getAllProducts(state));
-
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
       <Footer />
