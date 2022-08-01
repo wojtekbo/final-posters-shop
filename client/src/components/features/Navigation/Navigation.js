@@ -22,22 +22,17 @@ const Navigation = () => {
           <ul className={menuIsActive ? `${styles.nav_menu} ${styles.active}` : `${styles.nav_menu}`}>
             <li className={styles.nav_item}>
               <NavLink to="/" className={styles.nav_link}>
+                Home
+              </NavLink>
+            </li>
+            <li className={styles.nav_item}>
+              <NavLink to="/products-list" className={styles.nav_link}>
                 Produkty
               </NavLink>
             </li>
             <li className={styles.nav_item}>
-              <a href="/#" className={styles.nav_link}>
-                O Nas
-              </a>
-            </li>
-            <li className={styles.nav_item}>
-              <a href="/#" className={styles.nav_link}>
-                Kontakt
-              </a>
-            </li>
-            <li className={styles.nav_item}>
               <NavLink to="/shopping-cart" className={styles.nav_link}>
-                Koszyk
+                Koszyk <i className="fas fa-shopping-cart"></i>
               </NavLink>
             </li>
           </ul>

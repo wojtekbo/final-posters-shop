@@ -5,13 +5,20 @@ import uniqid from 'uniqid';
 export const getShoppingCart = ({shoppingCart}) => {
   return shoppingCart;
 };
+export const getPriceSum = ({shoppingCart}) => {
+  let priceSum = 0;
+  shoppingCart.forEach(element => {
+    priceSum = priceSum + element.quantity * element.price;
+  });
+  return priceSum;
+};
 
 /* thunk creators */
-// export const fetchProductById = id => {
+// export const fetchProductById = inCartId => {
 //   return (dispatch, getState) => {
 //     dispatch(fetchStarted());
 //     axios
-//       .get(`http://localhost:8000/api/products/${id}`)
+//       .get(`http://localhost:8000/api/products/${inCartId}`)
 //       .then(res => {
 //         dispatch(fetchProductByIdSuccess(res.data));
 //       })
@@ -24,33 +31,26 @@ export const getShoppingCart = ({shoppingCart}) => {
 // actions
 const createActionName = actionName => `app/selectedProduct/${actionName}`;
 const ADD_PRODUCT = createActionName('ADD_PRODUCT');
-const EDIT_PRODUCT = createActionName('EDIT_PRODUCT');
-// const FETCH_START = createActionName('FETCH_START');
-// const FETCH_PRODUCT_BY_ID_SUCCESS = createActionName('FETCH_PRODUCT_BY_ID_SUCCESS');
-// const FETCH_ERROR = createActionName('FETCH_ERROR');
+const REMOVE_PRODUCT = createActionName('REMOVE_PRODUCT');
 
 // action creators
 export const addProduct = payload => ({type: ADD_PRODUCT, payload});
-export const editProduct = payload => ({type: EDIT_PRODUCT, payload});
-// export const fetchStarted = payload => ({payload, type: FETCH_START});
-// export const fetchProductByIdSuccess = payload => ({payload, type: FETCH_PRODUCT_BY_ID_SUCCESS});
-// export const fetchError = payload => ({payload, type: FETCH_ERROR});
+export const removeProduct = payload => ({type: REMOVE_PRODUCT, payload});
 
 const shoppingCartReducer = (statePart = [], action) => {
   switch (action.type) {
     case ADD_PRODUCT:
-      return [...statePart, {...action.payload, id: uniqid()}];
-    case EDIT_PRODUCT:
-      return statePart.map(product => (product.id === action.payload.id ? {...product, ...action.payload} : product));
-    // case FETCH_START: {
-    //   return {...statePart, loading: {active: true, error: false}};
-    // }
-    // case FETCH_PRODUCT_BY_ID_SUCCESS: {
-    //   return {...statePart, loading: {active: false, error: false, loadingDate: new Date().toUTCString()}, data: action.payload};
-    // }
-    // case FETCH_ERROR: {
-    //   return {...statePart, loading: {active: false, error: action.payload}};
-    // }
+      let product = statePart.find(el => el._id === action.payload._id && el.choosenSize === action.payload.choosenSize);
+      if (product) {
+        return statePart.map(product =>
+          product._id === action.payload._id && product.choosenSize === action.payload.choosenSize ? {...product, quantity: product.quantity + action.payload.quantity} : {...product}
+        );
+      } else return [...statePart, {...action.payload, inCartId: uniqid()}];
+    case REMOVE_PRODUCT:
+      // if (action.payload.quantity < 0) {
+      console.log('usuwamy', action.payload);
+      return statePart.map(product => (product.inCartId === action.payload.inCartId ? {...product, quantity: product.quantity - action.payload.quantity} : {...product}));
+    // } else return statePart;
     default:
       return statePart;
   }

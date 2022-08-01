@@ -1,0 +1,27 @@
+@import '../../../styles/global.scss';
+.ShoppingCart {
+  min-height: 60vh;
+  background-color: $color-background-white;
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: $color-text-dark;
+  }
+  .sum {
+    text-align: end;
+  }
+  .wrapper {
+    margin: 0 auto;
+    max-width: 900px;
+  }
+}
+
+.ShoppingCart_empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  text-align: center;
+}

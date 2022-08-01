@@ -14,33 +14,48 @@ const AddToBasket = ({product}) => {
   } = useForm();
 
   const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState();
-  const [price, setPrice] = useState();
+  const [choosenSize, setSize] = useState();
+
+  const getPrice = () => {
+    let price;
+    product.size.forEach(el => {
+      if (el.type === choosenSize) {
+        price = el.price;
+      }
+    });
+    return price;
+  };
+
+  const getDimensions = () => {
+    let dimensions;
+    product.size.forEach(el => {
+      if (el.type === choosenSize) {
+        dimensions = el.dimensions;
+      }
+    });
+    return dimensions;
+  };
 
   const onSubmit = () => {
-    console.log('WYSYLAM');
-    dispatch(addProduct({...product, quantity, size, price}));
+    quantity ? dispatch(addProduct({...product, quantity, choosenSize, price: getPrice(), dimensions: getDimensions()})) : console.log('zła wartość');
+  };
 
-    // setPublishedDateError(!publishedDate);
-    //   action({title, content, publishedDate, price, localization, user, phone, status: 'published'});
+  const quantityChange = e => {
+    e.target.value && e.target.value > 0 && setQuantity(parseInt(e.target.value));
   };
 
   return (
     <div>
-      {/* <p>{product.size}</p> */}
-
       <Form onSubmit={validate(onSubmit)}>
         <Form.Group className="mb-3">
           <Form.Label>Ilość</Form.Label>
-          <Form.Control {...register('quantity', {required: true})} value={quantity} onChange={e => setQuantity(e.target.value)} type="number" />
+          <Form.Control {...register('quantity', {required: true})} value={quantity} onChange={e => quantityChange(e)} type="number" />
           {errors.quantity && <small className="d-block form-text text-danger mt-1">Pole wymagane</small>}
           <Form.Label className="mt-2">Rozmiar</Form.Label>
           <Form.Select
-            {...register('size', {required: true})}
+            {...register('choosenSize', {required: true})}
             onChange={e => {
               setSize(e.target.value);
-              console.log(e.target);
-              setPrice(e.target.getAttribute('data-price'));
             }}
             aria-label="Wybierz rozmiar"
           >
@@ -52,7 +67,7 @@ const AddToBasket = ({product}) => {
               </option>
             ))}
           </Form.Select>
-          {errors.size && <small className="d-block form-text text-danger mt-1">Pole wymagane</small>}
+          {errors.choosenSize && <small className="d-block form-text text-danger mt-1">Pole wymagane</small>}
         </Form.Group>
 
         <Button className="mt-2" variant="primary" type="submit">

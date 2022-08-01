@@ -1,0 +1,31 @@
+@import '../../../styles/global.scss';
+
+.ShoppingCartControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    height: 42px;
+    width: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover i {
+      transform: scale(1.2);
+    }
+    &:active i {
+      transform: scale(1);
+    }
+    i {
+      color: $color-text-dark;
+      font-size: 1.3rem;
+      transition: all 0.1s ease-in;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ShoppingCartControls {
+    flex-direction: column;
+  }
+}

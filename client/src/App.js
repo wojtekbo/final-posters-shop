@@ -13,6 +13,7 @@ import './styles/normalize.scss';
 import './styles/global.scss';
 import Product from './components/pages/Product/Product';
 import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart';
+import ProductsList from './components/pages/ProductsList/ProductsList';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/products-list" element={<ProductsList />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>

@@ -1,11 +1,10 @@
-import {Button} from 'bootstrap';
 import React, {useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {fetchProductById, getSelectedProduct} from '../../../redux/selectedProductRedux';
-import AddToBasket from '../../common/AddToBasket/AddToBasket';
+import AddToCart from '../../common/AddToCart/AddToCart';
 import LoadingPage from '../../common/LoadingPage/LoadingPage';
 
 import styles from './Product.module.scss';
@@ -44,7 +43,7 @@ const Product = () => {
                 </p>
               </div>
               <div className={styles.product_buy}>
-                <AddToBasket product={data} />
+                <AddToCart product={data} />
               </div>
             </div>
           </Container>
