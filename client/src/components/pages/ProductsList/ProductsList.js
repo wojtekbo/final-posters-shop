@@ -19,7 +19,7 @@ const ProductsList = () => {
             {products.data.map(product => (
               <div key={`product_${product._id}`} className={styles.product}>
                 <NavLink to={`/product/${product._id}`}>
-                  <img src={`${imgPath}/${product._id}/1.png`} alt={product.title} />
+                  <img src={`${imgPath}/${product._id}/${product.imgMini}`} alt={product.title} />
 
                   <div className={styles.background}></div>
                   <div className={styles.description}>
