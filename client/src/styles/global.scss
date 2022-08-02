@@ -5,6 +5,9 @@
 *::after {
   box-sizing: border-box;
 }
+html {
+  font-size: $base-size;
+}
 
 body {
   margin: 0;
@@ -12,7 +15,6 @@ body {
   color: $color-text-bright;
   background: $color-background;
   font-family: $font-text;
-  font-size: ($base-size);
   line-height: 1.7;
   letter-spacing: 0.5px;
   overflow-y: scroll;
@@ -28,6 +30,12 @@ a:visited {
 .container {
   margin: 0 auto;
   padding: 1rem;
+}
+
+@media only screen and (max-width: 1008px) {
+  html {
+    font-size: $base-size * 0.7;
+  }
 }
 
 @import './typography.scss';

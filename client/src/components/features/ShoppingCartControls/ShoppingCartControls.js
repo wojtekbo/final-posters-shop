@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {addProduct, removeProduct} from '../../../redux/shoppingCartRedux';
+import {addProduct, removeOne, removeProduct} from '../../../redux/shoppingCartRedux';
 import styles from './ShoppingCartControls.module.scss';
 
 const ShoppingCartControls = ({product}) => {
@@ -18,7 +18,7 @@ const ShoppingCartControls = ({product}) => {
       <div
         className={styles.icon}
         onClick={() => {
-          dispatch(removeProduct({...product, quantity: 1}));
+          dispatch(removeOne({...product}));
         }}
       >
         <i className="fas fa-minus"></i>

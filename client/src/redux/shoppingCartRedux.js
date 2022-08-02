@@ -31,10 +31,12 @@ export const getPriceSum = ({shoppingCart}) => {
 // actions
 const createActionName = actionName => `app/selectedProduct/${actionName}`;
 const ADD_PRODUCT = createActionName('ADD_PRODUCT');
+const REMOVE_ONE = createActionName('REMOVE_ONE');
 const REMOVE_PRODUCT = createActionName('REMOVE_PRODUCT');
 
 // action creators
 export const addProduct = payload => ({type: ADD_PRODUCT, payload});
+export const removeOne = payload => ({type: REMOVE_ONE, payload});
 export const removeProduct = payload => ({type: REMOVE_PRODUCT, payload});
 
 const shoppingCartReducer = (statePart = [], action) => {
@@ -46,11 +48,12 @@ const shoppingCartReducer = (statePart = [], action) => {
           product._id === action.payload._id && product.choosenSize === action.payload.choosenSize ? {...product, quantity: product.quantity + action.payload.quantity} : {...product}
         );
       } else return [...statePart, {...action.payload, inCartId: uniqid()}];
+    case REMOVE_ONE:
+      if (action.payload.quantity > 1) {
+        return statePart.map(product => (product.inCartId === action.payload.inCartId ? {...product, quantity: product.quantity - 1} : {...product}));
+      } else return statePart;
     case REMOVE_PRODUCT:
-      // if (action.payload.quantity < 0) {
-      console.log('usuwamy', action.payload);
-      return statePart.map(product => (product.inCartId === action.payload.inCartId ? {...product, quantity: product.quantity - action.payload.quantity} : {...product}));
-    // } else return statePart;
+      return statePart.filter(product => product.inCartId !== action.payload.inCartId);
     default:
       return statePart;
   }
