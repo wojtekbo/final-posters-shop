@@ -1,31 +1,19 @@
 @import '../../../styles/global.scss';
-.ShoppingCart {
-  min-height: 70vh;
+.Form {
   background-color: $color-background-white;
-  padding-bottom: 2.2rem;
-  p,
+  min-height: 70vh;
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  p,
+  span {
     color: $color-text-dark;
   }
-  .sum {
-    text-align: end;
-  }
-  .wrapper {
-    margin: 0 auto;
-    max-width: 900px;
-  }
-}
-.order_button {
-  display: flex;
-  margin-top: 1.6rem;
-  justify-content: flex-end;
-  align-items: center;
+  padding-top: 2rem;
 }
 
-.ShoppingCart_empty {
+.Form_empty {
   min-height: 70vh;
   background-color: $color-background-white;
   display: flex;

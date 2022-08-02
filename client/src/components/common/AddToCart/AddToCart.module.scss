@@ -1,0 +1,35 @@
+.AddToCart {
+  position: relative;
+  .info_box {
+    margin-top: 5px;
+    position: absolute;
+    width: 100%;
+    left: 20px;
+    bottom: -45px;
+    display: none;
+  }
+  .info_box[data-animation='true'] {
+    display: block;
+    animation: sampleanimation 1s 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes sampleanimation {
+  0% {
+    left: -10px;
+    opacity: 0;
+  }
+  40% {
+    left: 8px;
+    opacity: 1;
+  }
+  80% {
+    left: 8px;
+    opacity: 1;
+  }
+  100% {
+    left: 120px;
+    opacity: 0;
+  }
+}

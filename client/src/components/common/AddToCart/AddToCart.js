@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import {addProduct} from '../../../redux/shoppingCartRedux';
 import {useDispatch} from 'react-redux';
+import styles from './AddToCart.module.scss';
 
 const AddToBasket = ({product}) => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const AddToBasket = ({product}) => {
 
   const [quantity, setQuantity] = useState(1);
   const [choosenSize, setSize] = useState();
+  const [addToCartAnimation, setAddToCartAnimation] = useState('false');
 
   const getPrice = () => {
     let price;
@@ -37,7 +39,16 @@ const AddToBasket = ({product}) => {
   };
 
   const onSubmit = () => {
-    quantity ? dispatch(addProduct({...product, quantity, choosenSize, price: getPrice(), dimensions: getDimensions()})) : console.log('zła wartość');
+    if (quantity >= 1) {
+      dispatch(addProduct({...product, quantity, choosenSize, price: getPrice(), dimensions: getDimensions()}));
+      setAddToCartAnimation(true);
+    } else {
+      console.log('zła wartość');
+    }
+  };
+
+  const handleAddToCartAnimationEvent = () => {
+    setAddToCartAnimation(false);
   };
 
   const quantityChange = e => {
@@ -45,7 +56,7 @@ const AddToBasket = ({product}) => {
   };
 
   return (
-    <div>
+    <div className={styles.AddToCart}>
       <Form onSubmit={validate(onSubmit)}>
         <Form.Group className="mb-3">
           <Form.Label>Ilość</Form.Label>
@@ -73,6 +84,9 @@ const AddToBasket = ({product}) => {
         <Button className="mt-2" variant="primary" type="submit">
           Dodaj do koszyka
         </Button>
+        <p className={styles.info_box} data-animation={addToCartAnimation} onAnimationEnd={handleAddToCartAnimationEvent}>
+          {/* Dodano do koszyka */}+ {quantity} szt.
+        </p>
       </Form>
     </div>
   );

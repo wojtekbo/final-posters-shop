@@ -1,4 +1,3 @@
-import axios from 'axios';
 import uniqid from 'uniqid';
 
 //selectors
@@ -12,21 +11,6 @@ export const getPriceSum = ({shoppingCart}) => {
   });
   return priceSum;
 };
-
-/* thunk creators */
-// export const fetchProductById = inCartId => {
-//   return (dispatch, getState) => {
-//     dispatch(fetchStarted());
-//     axios
-//       .get(`http://localhost:8000/api/products/${inCartId}`)
-//       .then(res => {
-//         dispatch(fetchProductByIdSuccess(res.data));
-//       })
-//       .catch(err => {
-//         dispatch(fetchError(err.message || true));
-//       });
-//   };
-// };
 
 // actions
 const createActionName = actionName => `app/selectedProduct/${actionName}`;

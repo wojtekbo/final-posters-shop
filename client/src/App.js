@@ -14,6 +14,7 @@ import './styles/global.scss';
 import Product from './components/pages/Product/Product';
 import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart';
 import ProductsList from './components/pages/ProductsList/ProductsList';
+import Order from './components/pages/Order/Order';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/products-list" element={<ProductsList />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/order-form" element={<Order />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
       <Footer />

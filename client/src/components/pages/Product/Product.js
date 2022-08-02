@@ -30,7 +30,7 @@ const Product = () => {
       <div className={styles.Product}>
         <div className={styles.product_wrapper}>
           <div className={styles.imgages_main}>
-            <img src={`${imgPath}/${data._id}/1.png`} alt={data.title} />
+            <img src={`${imgPath}/${data._id}/${data.imgMain}`} alt={data.title} />
           </div>
           <Container>
             <div className={styles.product_data}>
@@ -48,8 +48,8 @@ const Product = () => {
             </div>
           </Container>
           <div className={styles.images_details}>
-            <img src={`${imgPath}/${data._id}/2.png`} alt={data.title} />
-            <img src={`${imgPath}/${data._id}/3.png`} alt={data.title} />
+            <img src={`${imgPath}/${data._id}/${data.imgDetails[0]}`} alt={data.title} />
+            <img src={`${imgPath}/${data._id}/${data.imgDetails[1]}`} alt={data.title} />
           </div>
         </div>
       </div>

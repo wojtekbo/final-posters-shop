@@ -32,9 +32,9 @@ a:visited {
   padding: 1rem;
 }
 
-@media only screen and (max-width: 1008px) {
+@media only screen and (max-width: 768px) {
   html {
-    font-size: $base-size * 0.7;
+    font-size: $base-size * 0.9;
   }
 }
 
