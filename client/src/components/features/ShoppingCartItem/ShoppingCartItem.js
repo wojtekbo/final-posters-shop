@@ -6,7 +6,7 @@ const ShoppingCartItem = ({product, imgPath}) => {
   return (
     <div className={styles.product_cart}>
       <div className={styles.product_img}>
-        <img src={`${imgPath}/${product._id}/1.png`} alt={product.title} />
+        <img src={`${imgPath}/${product.productId}/${product.productId}`} alt={product.title} />
       </div>
       <div className={styles.product_details}>
         <div className={styles.details_wrapper}>
