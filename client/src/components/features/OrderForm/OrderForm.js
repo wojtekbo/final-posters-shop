@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import styles from './OrderForm.module.scss';
 
 import axios from 'axios';
+import {API_URL} from '../../../config';
 // import {API_URL} from '../config';
 
 const OrderForm = ({shoppingCartItems, orderSum}) => {
@@ -54,10 +55,10 @@ const OrderForm = ({shoppingCartItems, orderSum}) => {
 
       const sendOrder = async () => {
         try {
-          let res = await axios.post(`http://localhost:8000/api/orders`, payload);
+          let res = await axios.post(`${API_URL}/orders`, payload);
           console.log('res', res);
         } catch (e) {
-          console.log('Blad');
+          console.log('Błąd zapisu do bazy');
         }
       };
 
