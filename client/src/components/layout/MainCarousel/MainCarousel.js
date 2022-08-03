@@ -35,9 +35,7 @@ const MainCarousel = () => {
           imgs.map(el => {
             return (
               <SwiperSlide key={'carusel_' + el._id}>
-                <Nav.Link className="me-2 p-0" as={NavLink} to={`/product/${el._id}`}>
-                  <img src={imgPath + el.img} alt={el.title} />
-                </Nav.Link>
+                <img src={imgPath + el.img} alt={el.title} />
               </SwiperSlide>
             );
           })}
