@@ -12,7 +12,7 @@ const ShoppingCart = () => {
   const navigate = useNavigate();
   const clickHandler = useCallback(() => navigate('/order-form'), [navigate]);
 
-  const imgPath = '/img/products/';
+  const imgPath = '/img/products';
 
   const shoppingCartItems = useSelector(state => getShoppingCart(state));
   const priceSum = useSelector(state => getPriceSum(state));

@@ -7,7 +7,7 @@ import styles from './ProductsList.module.scss';
 
 const ProductsList = () => {
   const products = useSelector(state => getAllProducts(state));
-  const imgPath = '/img/products/';
+  const imgPath = '/img/products';
 
   if (!products) {
     <></>;
@@ -19,7 +19,7 @@ const ProductsList = () => {
             {products.data.map(product => (
               <div key={`product_${product._id}`} className={styles.product}>
                 <NavLink to={`/product/${product._id}`}>
-                  <img src={`${imgPath}/${product._id}/${product.imgMini}`} alt={product.title} />
+                  <img src={`${imgPath}/${product.productId}/${product.imgMini}`} alt={product.title} />
 
                   <div className={styles.background}></div>
                   <div className={styles.description}>
