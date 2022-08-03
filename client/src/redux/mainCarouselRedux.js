@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {API_URL} from '../config';
 
 //selectors
 export const getAllMainCarouselImgs = ({mainCarouselImgs}) => {
@@ -10,7 +11,7 @@ export const fetchGetAllMainCarouselImgs = () => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
     axios
-      .get('http://localhost:8000/api/mainCarousel')
+      .get(`${API_URL}/mainCarousel`)
       .then(res => {
         dispatch(fetchImagesSuccess(res.data));
       })

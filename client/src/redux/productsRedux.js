@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {API_URL} from '../config';
 
 //selectors
 export const getAllProducts = ({products}) => {
@@ -10,7 +11,7 @@ export const fetchGetAllProducts = () => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
     axios
-      .get('http://localhost:8000/api/products')
+      .get(`${API_URL}/products`)
       .then(res => {
         dispatch(fetchProductsSuccess(res.data));
       })

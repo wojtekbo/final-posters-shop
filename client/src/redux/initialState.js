@@ -1,7 +1,7 @@
 const initialState = {
-  mainCarouselImgs: {data: [{id: '222', title: 'tytul'}]},
+  mainCarouselImgs: {data: []},
   products: {
-    data: [{id: '10', title: 'tytul'}],
+    data: [],
   },
 };
 

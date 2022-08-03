@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {API_URL} from '../config';
 
 //selectors
 export const getSelectedProduct = ({selectedProduct}) => {
@@ -10,7 +11,7 @@ export const fetchProductById = id => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
     axios
-      .get(`http://localhost:8000/api/products/${id}`)
+      .get(`${API_URL}/products/${id}`)
       .then(res => {
         dispatch(fetchProductByIdSuccess(res.data));
       })

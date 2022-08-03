@@ -25,14 +25,20 @@ app.use('/api', (req, res) => {
 });
 
 /* REACT WEBSITE */
-// app.use(express.static(path.join(__dirname, './build')));
-app.use(express.static(path.join(__dirname, './public')));
-app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './build/index.html'));
+app.use(express.static(path.join(__dirname, '/client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/postersShopDB', {useNewUrlParser: true, useUnifiedTopology: true});
+const NODE_ENV = process.env.NODE_ENV;
+let dbUri = '';
+
+if (NODE_ENV === 'production') dbUri = `mongodb+srv://${process.env.DB_login}:${process.env.DB_password}@cluster0.rine5a0.mongodb.net/?retryWrites=true&w=majority`;
+else if (NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/postersShopDB';
+else dbUri = 'mongodb://localhost:27017/postersShopDB';
+
+mongoose.connect(dbUri, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');
