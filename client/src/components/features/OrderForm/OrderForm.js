@@ -11,11 +11,9 @@ import {API_URL} from '../../../config';
 // import {API_URL} from '../config';
 
 const OrderForm = ({shoppingCartItems, orderSum}) => {
-  console.log('shoppingCartItems', shoppingCartItems);
   const products = shoppingCartItems.map(product => {
     return {product: product.title, quantity: product.quantity, dimensions: product.dimensions, price: product.price, totalPrice: product.price * product.quantity, productId: product._id};
   });
-  console.log(products);
 
   const navigate = useNavigate();
 
@@ -51,12 +49,9 @@ const OrderForm = ({shoppingCartItems, orderSum}) => {
         products: products,
       };
 
-      console.log('payload', payload);
-
       const sendOrder = async () => {
         try {
           let res = await axios.post(`${API_URL}/orders`, payload);
-          console.log('res', res);
         } catch (e) {
           console.log('Błąd zapisu do bazy');
         }

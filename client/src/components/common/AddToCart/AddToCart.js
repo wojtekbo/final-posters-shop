@@ -42,8 +42,6 @@ const AddToBasket = ({product}) => {
     if (quantity >= 1) {
       dispatch(addProduct({...product, quantity, choosenSize, price: getPrice(), dimensions: getDimensions()}));
       setAddToCartAnimation(true);
-    } else {
-      console.log('zła wartość');
     }
   };
 
