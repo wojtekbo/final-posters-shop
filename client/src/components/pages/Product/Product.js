@@ -21,7 +21,7 @@ const Product = () => {
 
   let {data} = product;
 
-  const imgPath = '/img/products/';
+  const imgPath = '/img/products';
 
   if (!data) {
     return <LoadingPage />;
