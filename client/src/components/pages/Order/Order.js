@@ -9,7 +9,6 @@ import styles from './Order.module.scss';
 
 const Form = () => {
   const shoppingCartItems = useSelector(state => getShoppingCart(state));
-  console.log(shoppingCartItems);
   const orderSum = useSelector(state => getPriceSum(state));
 
   if (shoppingCartItems.length <= 0) {
