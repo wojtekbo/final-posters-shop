@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-You can check deployed version on heroku: [https://final-posters-shop.herokuapp.com/] (https://final-posters-shop.herokuapp.com/)
+You can check deployed version on heroku: [https://final-posters-shop.herokuapp.com/](https://final-posters-shop.herokuapp.com/)
 
 ## Available Scripts
 
@@ -13,7 +13,7 @@ Instal all server and client dependencies.
 
 ### `npm run start`
 
-Starts back-end server [http://localhost:8000/] (http://localhost:8000/) and starts front-end server [http://localhost:3000](http://localhost:3000).
+Starts back-end server [http://localhost:8000/](http://localhost:8000/) and starts front-end server [http://localhost:3000](http://localhost:3000).
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
